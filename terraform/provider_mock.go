@@ -267,7 +267,7 @@ func (p *MockProvider) ImportResourceState(r providers.ImportResourceStateReques
 	if p.ImportStateReturn != nil {
 		for _, is := range p.ImportStateReturn {
 			is.Attributes["id"] = is.ID
-			schema := p.GetSchemaReturn.ResourceTypes[t.TypeName]
+			schema := p.GetSchemaReturn.ResourceTypes[r.TypeName]
 			private, err := json.Marshal(is.Meta)
 			if err != nil {
 				panic(err)
