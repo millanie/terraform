@@ -253,7 +253,7 @@ func TestContext2Input_providerOnce(t *testing.T) {
 		),
 	})
 
-	count := 0
+	//count := 0
 	/*p.InputFn = func(i UIInput, c *ResourceConfig) (*ResourceConfig, error) {
 		count++
 		_, set := c.Config["from_input"]
