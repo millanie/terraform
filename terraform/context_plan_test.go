@@ -3806,8 +3806,9 @@ func TestContext2Plan_resourceNestedCount(t *testing.T) {
 	m := testModule(t, "nested-resource-count-plan")
 	p := testProvider("aws")
 	p.DiffFn = testDiffFn
-	p.RefreshFn = func(i *InstanceInfo, is *InstanceState) (*InstanceState, error) {
-		return is, nil
+	p.ReadResourceFn = func(req providers.ReadResourceRequest) (resp providers.ReadResourceResponse) {
+		resp.NewState = req.PriorState
+		return
 	}
 	s := mustShimLegacyState(&State{
 		Modules: []*ModuleState{
